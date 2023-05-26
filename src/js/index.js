@@ -7,4 +7,4 @@ new SlimSelect({
 
 import { fetchBreeds } from "./cat-api.js";
 
-fetchBreeds('Bengal').then((result) => console.log(result));
+fetchBreeds().then((result) => console.log(result));
