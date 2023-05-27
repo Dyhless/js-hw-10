@@ -3,7 +3,6 @@
 const URL = 'https://api.thecatapi.com/v1/breeds';
 const API_KEY = 'live_VhTrCGP65dIGzY8rmbUl7pgkAFfxbHetBgABGPGnLaQCFWyU5T7IvvATQNKs3Uhk';
 
-
 export function fetchBreeds() {
   return fetch(URL, {
     headers: {

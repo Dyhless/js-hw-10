@@ -5,7 +5,7 @@ new SlimSelect({
   select: '#selectElement',
 });
 
-import { fetchBreeds, fetchCatByBreed } from './cat-api.js';
+import { fetchBreeds } from './cat-api.js';
  
 const refs = {
   breedSelect: document.querySelector('.breed-select'),
