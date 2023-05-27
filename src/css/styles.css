@@ -67,14 +67,11 @@
 }
 
 .loader {
-   /* Существующие стили */
    display: none;
-   /* Добавлено */
 }
 
 .loader.visible {
    display: block;
-   /* Добавлено */
 }
 
 .cat-info img {
