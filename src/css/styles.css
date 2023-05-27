@@ -65,3 +65,19 @@
       background-position: -2px -4px, 2px 2px, 1px 1px;
    }
 }
+
+.loader {
+   /* Существующие стили */
+   display: none;
+   /* Добавлено */
+}
+
+.loader.visible {
+   display: block;
+   /* Добавлено */
+}
+
+.cat-info img {
+   max-width: 30%;
+   max-height: 30%;
+}

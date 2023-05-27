@@ -1,5 +1,6 @@
 import Notiflix from 'notiflix';
-import SlimSelect from 'slim-select/dist/slimselect.min';
+import SlimSelect from 'slim-select';
+
 
 import { fetchBreeds, fetchCatByBreed } from './cat-api.js';
 
@@ -8,15 +9,20 @@ const refs = {
   loadingElement: document.querySelector('.loading'),
   errorElement: document.querySelector('.error'),
   catInfoContainer: document.querySelector('.cat-info'),
+  loaderElement: document.querySelector('.loader'), // Добавлено
 };
 
 document.addEventListener('DOMContentLoaded', () => {
   new SlimSelect({
-    select: '.breed-select',
+    select: '#breed-select',
+    searchable: false,
   });
 
   refs.breedSelect.addEventListener('change', function () {
     const selectedBreedId = this.value;
+
+    // Показать загрузчик
+    refs.loaderElement.classList.add('visible');
 
     fetchCatByBreed(selectedBreedId)
       .then(catInfo => {
@@ -39,9 +45,14 @@ document.addEventListener('DOMContentLoaded', () => {
         refs.catInfoContainer.appendChild(temperament);
 
         refs.catInfoContainer.style.display = 'block';
+
+        // Скрыть загрузчик
+        refs.loaderElement.classList.remove('visible');
       })
       .catch(error => {
         console.error(error);
+        // Скрыть загрузчик
+        refs.loaderElement.classList.remove('visible');
       });
   });
 
