@@ -34,13 +34,13 @@ document.addEventListener('DOMContentLoaded', () => {
         catImage.src = catInfo.imageUrl;
 
         const breedName = document.createElement('p');
-        breedName.textContent = `Порода: ${catInfo.breedName}`;
+        breedName.textContent = `Breed: ${catInfo.breedName}`;
 
         const description = document.createElement('p');
-        description.textContent = `Описание: ${catInfo.description}`;
+        description.textContent = `Description: ${catInfo.description}`;
 
         const temperament = document.createElement('p');
-        temperament.textContent = `Характер: ${catInfo.temperament}`;
+        temperament.textContent = `Temperament: ${catInfo.temperament}`;
 
         // Очистка и заполнение контейнера с информацией о кошке
         refs.catInfoContainer.innerHTML = '';
