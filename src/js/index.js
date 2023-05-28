@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
     searchable: false,
   });
 
-// Скрыть элемент с ошибкой при начале загрузки
+// Скрыть уведомление с ошибкой при начале загрузки
 errorElement.style.display = 'none';
 
 // Функция для получения информации о кошке по породе
@@ -48,7 +48,7 @@ const getCatInfoByBreed = (selectedBreedId) => {
       loaderElement.classList.remove('visible');
       Notiflix.Notify.failure('Произошла ошибка. Пожалуйста, повторите попытку позже.');
 
-      // Показать элемент с ошибкой в случае ошибки загрузки
+      // Показать уведомление в случае ошибки загрузки
       errorElement.style.display = 'block';
     });
 };
