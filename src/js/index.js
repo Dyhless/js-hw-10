@@ -23,34 +23,34 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 // Функция для получения информации о кошке по породе
-const getCatInfoByBreed = (selectedBreedId) => {
-  // Показать элемент загрузки
-  loadingElement.style.display = 'block';
-  
-  return catApi.fetchCatByBreed(selectedBreedId)
-    .then((catInfo) => {
-      // Формирование HTML с информацией о кошке
-      const catInfoHTML = `
+  function getCatInfoByBreed(selectedBreedId) {
+    // Показать элемент загрузки
+    loadingElement.style.display = 'block';
+
+    return catApi.fetchCatByBreed(selectedBreedId)
+      .then((catInfo) => {
+        // Формирование HTML с информацией о кошке
+        const catInfoHTML = `
         <img src="${catInfo.imageUrl}">
         <p>Breed: ${catInfo.breedName}</p>
         <p>Description: ${catInfo.description}</p>
         <p>Temperament: ${catInfo.temperament}</p>
       `;
-      // Вставка HTML с информацией о кошке в контейнер и отображение контейнера
-      catInfoContainer.innerHTML = catInfoHTML;
-      catInfoContainer.style.display = 'block';
-      // Скрытие элемента загрузки
-      loaderElement.style.display = 'none';
-    })
-    .catch((error) => {
-      console.error(error);
-      // Скрытие элемента загрузки и вывод уведомления об ошибке
-      loaderElement.classList.remove('visible');
-      Notiflix.Notify.failure('Произошла ошибка. Пожалуйста, повторите попытку позже.');
-      // Показать уведомление в случае ошибки загрузки
-      errorElement.style.display = 'block';
-    });
-};
+        // Вставка HTML с информацией о кошке в контейнер и отображение контейнера
+        catInfoContainer.innerHTML = catInfoHTML;
+        catInfoContainer.style.display = 'block';
+        // Скрытие элемента загрузки
+        loaderElement.style.display = 'none';
+      })
+      .catch((error) => {
+        console.error(error);
+        // Скрытие элемента загрузки и вывод уведомления об ошибке
+        loaderElement.classList.remove('visible');
+        Notiflix.Notify.failure('Произошла ошибка. Пожалуйста, повторите попытку позже.');
+        // Показать уведомление в случае ошибки загрузки
+        errorElement.style.display = 'block';
+      });
+  }
 
 // Обработчик события изменения выбора породы
 breedSelect.addEventListener('change', () => {
