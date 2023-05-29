@@ -15,15 +15,18 @@ document.addEventListener('DOMContentLoaded', () => {
   // Инициализация SlimSelect для выбора породы
   new SlimSelect({
     select: '#breed-select',
+    showContent: 'down',
+    placeholder: 'Select a breed',
+    allowDeselect: true,
+    deselectLabel: '<span class="placeholder-text">Select a breed</span>',
     searchable: false,
   });
 
-// Скрыть уведомление с ошибкой при начале загрузки
-errorElement.style.display = 'none';
-
 // Функция для получения информации о кошке по породе
 const getCatInfoByBreed = (selectedBreedId) => {
-
+  // Показать элемент загрузки
+  loadingElement.style.display = 'block';
+  
   return catApi.fetchCatByBreed(selectedBreedId)
     .then((catInfo) => {
       // Формирование HTML с информацией о кошке
@@ -33,21 +36,17 @@ const getCatInfoByBreed = (selectedBreedId) => {
         <p>Description: ${catInfo.description}</p>
         <p>Temperament: ${catInfo.temperament}</p>
       `;
-
       // Вставка HTML с информацией о кошке в контейнер и отображение контейнера
       catInfoContainer.innerHTML = catInfoHTML;
       catInfoContainer.style.display = 'block';
-
       // Скрытие элемента загрузки
-      loaderElement.classList.remove('visible');
+      loaderElement.style.display = 'none';
     })
     .catch((error) => {
       console.error(error);
-
       // Скрытие элемента загрузки и вывод уведомления об ошибке
       loaderElement.classList.remove('visible');
       Notiflix.Notify.failure('Произошла ошибка. Пожалуйста, повторите попытку позже.');
-
       // Показать уведомление в случае ошибки загрузки
       errorElement.style.display = 'block';
     });
@@ -56,14 +55,9 @@ const getCatInfoByBreed = (selectedBreedId) => {
 // Обработчик события изменения выбора породы
 breedSelect.addEventListener('change', () => {
   const selectedBreedId = breedSelect.value;
-
-  // Отображение элемента загрузки
-  loaderElement.classList.add('visible');
-
   // Получение информации о кошке по выбранной породе
   getCatInfoByBreed(selectedBreedId);
 });
-
 // Получение списка пород и заполнение выбора породы
 catApi.fetchBreeds()
   .then((breeds) => {
@@ -74,14 +68,13 @@ catApi.fetchBreeds()
       option.textContent = breed.name;
       breedSelect.appendChild(option);
     });
-
     // Включение выбора породы и скрытие элемента загрузки после успешной загрузки списка пород
     breedSelect.disabled = false;
+    // Скрытие элемента загрузки
     loadingElement.style.display = 'none';
   })
   .catch((error) => {
     console.error(error);
-
     // Вывод уведомления об ошибке и скрытие элемента загрузки в случае ошибки при загрузке списка пород
     Notiflix.Notify.failure('Не удалось загрузить список пород. Пожалуйста, повторите попытку позже.');
     loadingElement.style.display = 'none';
