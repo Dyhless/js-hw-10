@@ -10,6 +10,7 @@ const errorElement = document.querySelector('.error');
 const catInfoContainer = document.querySelector('.cat-info');
 const loaderElement = document.querySelector('.loader');
 
+// Скрытие элементов загрузки и ошибки
 loadingElement.style.display = 'none';
 errorElement.style.display = 'none';
 // Обработчик события загрузки контента страницы
