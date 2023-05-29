@@ -27,29 +27,30 @@ document.addEventListener('DOMContentLoaded', () => {
     // Показать элемент загрузки
     loadingElement.style.display = 'block';
 
-    return catApi.fetchCatByBreed(selectedBreedId)
-      .then((catInfo) => {
-        // Формирование HTML с информацией о кошке
-        const catInfoHTML = `
-        <img src="${catInfo.imageUrl}">
-        <p>Breed: ${catInfo.breedName}</p>
-        <p>Description: ${catInfo.description}</p>
-        <p>Temperament: ${catInfo.temperament}</p>
-      `;
-        // Вставка HTML с информацией о кошке в контейнер и отображение контейнера
-        catInfoContainer.innerHTML = catInfoHTML;
-        catInfoContainer.style.display = 'block';
-        // Скрытие элемента загрузки
-        loaderElement.style.display = 'none';
-      })
-      .catch((error) => {
-        console.error(error);
-        // Скрытие элемента загрузки и вывод уведомления об ошибке
-        loaderElement.classList.remove('visible');
-        Notiflix.Notify.failure('Произошла ошибка. Пожалуйста, повторите попытку позже.');
-        // Показать уведомление в случае ошибки загрузки
-        errorElement.style.display = 'block';
-      });
+  return catApi
+  .fetchCatByBreed(selectedBreedId)
+  .then((catInfo) => {
+    // Формирование HTML с информацией о кошке
+    const catInfoHTML = `
+      <img src="${catInfo.imageUrl}">
+      <p>Breed: ${catInfo.breedName}</p>
+      <p>Description: ${catInfo.description}</p>
+      <p>Temperament: ${catInfo.temperament}</p>
+    `;
+    // Вставка HTML с информацией о кошке в контейнер и отображение контейнера
+    catInfoContainer.innerHTML = catInfoHTML;
+    catInfoContainer.style.display = 'block';
+    // Скрытие элемента загрузки
+    loaderElement.style.display = 'none';
+  })
+  .catch((error) => {
+    console.error(error);
+    // Скрытие элемента загрузки и вывод уведомления об ошибке
+    loaderElement.classList.remove('visible');
+    Notiflix.Notify.failure('Произошла ошибка. Пожалуйста, повторите попытку позже.');
+    // Показать уведомление в случае ошибки загрузки
+    errorElement.style.display = 'block';
+  });
   }
 
 // Обработчик события изменения выбора породы
@@ -57,6 +58,9 @@ breedSelect.addEventListener('change', () => {
   const selectedBreedId = breedSelect.value;
   // Получение информации о кошке по выбранной породе
   getCatInfoByBreed(selectedBreedId);
+  // Скрытие элементов загрузки и ошибки
+  loadingElement.style.display = 'none';
+  errorElement.style.display = 'none';
 });
 // Получение списка пород и заполнение выбора породы
 catApi.fetchBreeds()
