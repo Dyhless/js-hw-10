@@ -14,7 +14,7 @@ const loaderElement = document.querySelector('.loader');
 document.addEventListener('DOMContentLoaded', () => {
   // Инициализация SlimSelect для выбора породы
   new SlimSelect({
-    select: '#breed-select',
+    select: 'breed-select',
     showContent: 'down',
     placeholder: 'Select a breed',
     allowDeselect: true,
