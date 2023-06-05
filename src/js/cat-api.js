@@ -1,7 +1,7 @@
 // Устанавливаем базовый URL для API
-const BASE_URL = 'https://api.thecatapi.com/v1';
+export const BASE_URL = 'https://api.thecatapi.com/v1';
 // Устанавливаем ключ API
-const API_KEY = 'live_VhTrCGP65dIGzY8rmbUl7pgkAFfxbHetBgABGPGnLaQCFWyU5T7IvvATQNKs3Uhk';
+export const API_KEY = 'live_VhTrCGP65dIGzY8rmbUl7pgkAFfxbHetBgABGPGnLaQCFWyU5T7IvvATQNKs3Uhk';
 
 // Определяем функцию fetchBreeds для получения списка пород
 export function fetchBreeds() {
