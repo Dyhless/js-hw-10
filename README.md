@@ -2,7 +2,7 @@
 
 ### Tasks - Acceptance criteria
 
-- The repository goit-js-hw-10 is created.
+- The repository js-hw-10 is created.
 - When you submit your homework, there are two links: to the source files and to
   the work page on the GitHub Pages.
 - There are no errors or warnings in the console when you visit the live task
