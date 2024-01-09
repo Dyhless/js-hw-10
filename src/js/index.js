@@ -13,6 +13,7 @@ const loaderElement = document.querySelector('.loader');
 // Скрытие элементов загрузки и ошибки
 loadingElement.style.display = 'block';
 errorElement.style.display = 'none';
+
 // Обработчик события загрузки контента страницы
 document.addEventListener('DOMContentLoaded', () => {
   // Инициализация SlimSelect для выбора породы
