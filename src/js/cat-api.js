@@ -7,7 +7,6 @@ export const API_KEY = 'live_VhTrCGP65dIGzY8rmbUl7pgkAFfxbHetBgABGPGnLaQCFWyU5T7
 export function fetchBreeds() {
   // Формируем конечную точку URL для запроса списка пород
   const endpoint = `${BASE_URL}/breeds`;
-
   // Выполняем запрос с помощью функции fetch
   return fetch(endpoint, {
     headers: {
@@ -17,7 +16,8 @@ export function fetchBreeds() {
     .then(response => {
       // Проверяем, успешен ли ответ
       if (!response.ok) {
-        throw new Error('Failed to fetch breeds'); // Выбрасываем ошибку в случае неудачного запроса
+        // Выбрасываем ошибку в случае неудачного запроса
+        throw new Error('Failed to fetch breeds'); 
       }
       // Преобразуем ответ в формат JSON
       return response.json();
@@ -35,7 +35,6 @@ export function fetchBreeds() {
 export function fetchCatByBreed(breedId) {
   // Формируем конечную точку URL для запроса информации о кошке
   const endpoint = `${BASE_URL}/images/search?breed_ids=${breedId}`;
-
   // Выполняем запрос с помощью функции fetch
   return fetch(endpoint, {
     headers: {
@@ -45,7 +44,8 @@ export function fetchCatByBreed(breedId) {
     .then(response => {
       // Проверяем, успешен ли ответ
       if (!response.ok) {
-        throw new Error('Failed to fetch cat by breed'); // Выбрасываем ошибку в случае неудачного запроса
+        // Выбрасываем ошибку в случае неудачного запроса
+        throw new Error('Failed to fetch cat by breed'); 
       }
       // Преобразуем ответ в формат JSON
       return response.json();
@@ -63,7 +63,8 @@ export function fetchCatByBreed(breedId) {
           temperament: catInfo.temperament,
         };
       } else {
-        throw new Error('No cat found for the selected breed'); // Выбрасываем ошибку, если не найдено ни одной кошки для выбранной породы
+        // Выбрасываем ошибку, если не найдено ни одной кошки для выбранной породы
+        throw new Error('No cat found for the selected breed'); 
       }
     });
 }
